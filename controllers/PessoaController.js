@@ -10,6 +10,16 @@ class PessoaController{
             return res.status(500).json(error.message)
         }    
     }
+
+    static async createPeople(req, res){
+        const newPeople = req.body;
+        try{
+            const createdPeople = await database.pessoas.create(newPeople);
+            return res.status(200).json(createdPeople);
+        }catch(erro200){
+            return res.status(500).json(eror.message);
+        }        
+    }
 }
 
 module.exports = PessoaController
